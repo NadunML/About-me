@@ -29,29 +29,89 @@ function Skills() {
     };
   }, []);
 
+  // Using CDN links for logos (no need to download)
   const skillCategories = [
     {
-      title: "Programming Languages",
+      title: "Frontend Technologies",
       skills: [
-        { name: "Java" },
-        { name: "JavaScript"},
-        { name: "C" }
+        { 
+          name: "HTML5", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" 
+        },
+        { 
+          name: "CSS3", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" 
+        },
+        { 
+          name: "JavaScript", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" 
+        },
+        { 
+          name: "React", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" 
+        },
+        { 
+          name: "Bootstrap", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" 
+        },
       ]
     },
     {
-      title: "Web Development",
+      title: "Backend & Databases",
       skills: [
-        { name: "HTML/CSS" },
-        { name: "React" },
-        { name: "Node.js" },
+        { 
+          name: "Node.js", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" 
+        },
+        { 
+          name: "Express", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" 
+        },
+        { 
+          name: "MongoDB", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" 
+        },
+        { 
+          name: "MySQL", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" 
+        },
+        { 
+          name: "Java", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" 
+        },
+        { 
+          name: "Python", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" 
+        }
       ]
     },
     {
-      title: "Database & Tools",
+      title: "Tools & Others",
       skills: [
-        { name: "MySQL"},
-        { name: "MongoDB"},
-        { name: "Git"}
+        { 
+          name: "Git", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" 
+        },
+        { 
+          name: "VS Code", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" 
+        },
+        { 
+          name: "Figma", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" 
+        },
+        { 
+          name: "Linux", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" 
+        },
+        { 
+          name: "GitHub", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" 
+        },
+        { 
+          name: "Postman", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" 
+        }
       ]
     }
   ];
@@ -60,23 +120,29 @@ function Skills() {
     <section id="skills" className="skills section">
       <div className="container">
         <h2 className="section-title">My Skills</h2>
-        <div ref={skillsRef} className="skills-content reveal">
+        
+        <div ref={skillsRef} className="skills-grid reveal">
           {skillCategories.map((category, index) => (
             <div key={index} className="skill-category">
-              <h3>{category.title}</h3>
+              <h3 className="category-title">{category.title}</h3>
               <div className="skills-list">
                 {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="skill">
-                    <div className="skill-info">
-                      <span>{skill.name}</span>
-                      <span>{skill.level}✔</span>
+                  <div key={skillIndex} className="skill-item">
+                    <div className="skill-logo">
+                      <img 
+                        src={skill.logo} 
+                        alt={skill.name}
+                        onError={(e) => {
+                          // Fallback if logo doesn't load
+                          e.target.style.display = 'none';
+                          const fallback = e.target.nextSibling;
+                          fallback.style.display = 'flex';
+                          fallback.textContent = skill.name.split(' ').map(word => word[0]).join('');
+                        }}
+                      />
+                      <div className="logo-fallback"></div>
                     </div>
-                    <div className="skill-bar">
-                      <div 
-                        className="skill-progress" 
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
+                    <span className="skill-name">{skill.name}</span>
                   </div>
                 ))}
               </div>
