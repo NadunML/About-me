@@ -8,7 +8,7 @@ function About() {
   // Replace these with your actual image paths
   const images = [
     "/image1.jpg",
-    "/image3.webp"
+    "/image2.jpg"
   ];
 
   useEffect(() => {
