@@ -1,0 +1,44 @@
+.background-3d-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  background: #070913;
+  overflow: hidden;
+}
+
+.gradient-ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.orb-1 {
+  top: -10%;
+  left: 15%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #6366f1 0%, rgba(0,0,0,0) 70%);
+}
+
+.orb-2 {
+  bottom: 10%;
+  right: -5%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, #06b6d4 0%, rgba(0,0,0,0) 70%);
+}
+
+.orb-3 {
+  top: 40%;
+  left: 30%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #a855f7 0%, rgba(0,0,0,0) 70%);
+  opacity: 0.15;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Background3D from './components/Background3D';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -12,6 +13,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div className="App">
+      <Background3D />
       <Header />
       <Hero />
       <About />
