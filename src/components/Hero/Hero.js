@@ -79,16 +79,15 @@ function Hero() {
               <button className="btn btn-secondary" onClick={() => scrollToSection('contact')}>
                 <span>Get In Touch</span>
               </button>
+              
+              {/* Updated Download CV Button */}
               <a 
-                href="#contact" 
+                href="/Nadun_CV.pdf" 
+                download="Nadun_Dilmina_CV.pdf"
                 className="btn btn-outline"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection('contact');
-                }}
               >
                 <Download size={18} />
-                <span>CV & Contact</span>
+                <span>Download CV</span>
               </a>
             </motion.div>
 

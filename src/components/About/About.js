@@ -9,7 +9,7 @@ function About() {
   const images = [
     "/nadun.jpg",
     "/image1.jpg",
-    "/image3.webp"
+    "/image2.jpg"
   ];
 
   useEffect(() => {
