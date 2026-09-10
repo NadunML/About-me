@@ -1,98 +1,62 @@
-import React, { useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Sphere, MeshDistortMaterial, Stars } from '@react-three/drei';
+import React, { useEffect, useRef } from 'react';
 import './Background3D.css';
 
-const AnimatedTorusKnot = () => {
-  const meshRef = useRef();
-
-  useFrame((state, delta) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x += delta * 0.15;
-      meshRef.current.rotation.y += delta * 0.25;
-    }
-  });
-
-  return (
-    <Float speed={2} rotationIntensity={1.2} floatIntensity={1.8}>
-      <mesh ref={meshRef} position={[3.5, 1.2, -3]}>
-        <torusKnotGeometry args={[1.2, 0.35, 128, 32]} />
-        <meshStandardMaterial 
-          color="#6366f1" 
-          wireframe
-          transparent
-          opacity={0.35}
-        />
-      </mesh>
-    </Float>
-  );
-};
-
-const AnimatedSphere = () => {
-  return (
-    <Float speed={2.5} rotationIntensity={1.8} floatIntensity={1.5}>
-      <Sphere args={[1.1, 64, 64]} position={[-3.8, -1.8, -4]}>
-        <MeshDistortMaterial
-          color="#06b6d4"
-          envMapIntensity={1}
-          clearcoat={1}
-          clearcoatRoughness={0.1}
-          metalness={0.6}
-          roughness={0.2}
-          distort={0.45}
-          speed={2}
-          transparent
-          opacity={0.5}
-        />
-      </Sphere>
-    </Float>
-  );
-};
-
-const AnimatedIcosahedron = () => {
-  const icoRef = useRef();
-
-  useFrame((state, delta) => {
-    if (icoRef.current) {
-      icoRef.current.rotation.x -= delta * 0.2;
-      icoRef.current.rotation.z += delta * 0.15;
-    }
-  });
-
-  return (
-    <Float speed={1.8} rotationIntensity={1.5} floatIntensity={1.5}>
-      <mesh ref={icoRef} position={[-2.5, 2.5, -6]}>
-        <icosahedronGeometry args={[1.4, 0]} />
-        <meshStandardMaterial
-          color="#a855f7"
-          wireframe
-          transparent
-          opacity={0.3}
-        />
-      </mesh>
-    </Float>
-  );
-};
-
 export default function Background3D() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const binary = "10";
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = Array.from({ length: columns }).fill(1);
+
+    const draw = () => {
+      // Parana background color eka fade wena widiyata (Trail effect)
+      ctx.fillStyle = 'rgba(7, 9, 19, 0.1)'; 
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Binary text color eka
+      ctx.fillStyle = '#6366f1'; 
+      ctx.font = fontSize + 'px monospace';
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = binary.charAt(Math.floor(Math.random() * binary.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    };
+
+    const interval = setInterval(draw, 50); 
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div className="background-3d-wrapper">
+      <canvas ref={canvasRef} className="binary-canvas" />
       <div className="gradient-ambient-orb orb-1"></div>
       <div className="gradient-ambient-orb orb-2"></div>
       <div className="gradient-ambient-orb orb-3"></div>
-
-      <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-        <ambientLight intensity={0.6} />
-        <directionalLight position={[10, 10, 5]} intensity={1.2} />
-        <pointLight position={[-10, -10, -10]} intensity={0.6} color="#6366f1" />
-        <pointLight position={[10, -10, 10]} intensity={0.6} color="#06b6d4" />
-        
-        <Stars radius={100} depth={50} count={3500} factor={4} saturation={0} fade speed={1.2} />
-        
-        <AnimatedTorusKnot />
-        <AnimatedSphere />
-        <AnimatedIcosahedron />
-      </Canvas>
     </div>
   );
 }

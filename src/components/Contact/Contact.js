@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Copy, Check, Sparkles } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 function Contact() {
+  const formRef = useRef();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,6 +15,7 @@ function Contact() {
 
   const [copiedField, setCopiedField] = useState(null);
   const [submitted, setSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   const contactDetails = [
     {
@@ -83,17 +86,30 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 4000);
+    setIsSending(true);
+
+    emailjs.sendForm(
+      'service_um1r9ww',
+      'template_4hiu7j8',
+      formRef.current,
+      'APAxBCsiMnNyq3wDr'
+    )
+    .then((result) => {
+      setIsSending(false);
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      }, 4000);
+    }, (error) => {
+      setIsSending(false);
+      alert("Something went wrong. Please try again later.");
+    });
   };
 
   return (
     <section id="contact" className="contact section">
       <div className="container">
-        {/* Section Header */}
         <div className="section-header">
           <span className="section-badge">
             <Sparkles size={14} />
@@ -108,7 +124,6 @@ function Contact() {
         </div>
         
         <div className="contact-grid">
-          {/* Left Column: Direct Info & Social Cards */}
           <motion.div 
             className="contact-info-column"
             initial={{ opacity: 0, x: -30 }}
@@ -154,7 +169,6 @@ function Contact() {
                 ))}
               </div>
 
-              {/* Social Profiles Grid */}
               <div className="social-profiles-wrapper">
                 <span className="social-heading">Connect On Social Platforms</span>
                 <div className="social-grid">
@@ -180,7 +194,6 @@ function Contact() {
             </div>
           </motion.div>
 
-          {/* Right Column: Contact Form */}
           <motion.div 
             className="contact-form-column"
             initial={{ opacity: 0, x: 30 }}
@@ -205,7 +218,7 @@ function Contact() {
                 )}
               </AnimatePresence>
 
-              <form onSubmit={handleSubmit} className="contact-form">
+              <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="name">Your Name</label>
@@ -215,7 +228,7 @@ function Contact() {
                       name="name" 
                       value={formData.name} 
                       onChange={handleChange} 
-                      placeholder="e.g. John Doe"
+                      placeholder="e.g. Nadun Dilmina"
                       required 
                     />
                   </div>
@@ -228,7 +241,7 @@ function Contact() {
                       name="email" 
                       value={formData.email} 
                       onChange={handleChange} 
-                      placeholder="john@example.com"
+                      placeholder="Abc@example.com"
                       required 
                     />
                   </div>
@@ -260,8 +273,8 @@ function Contact() {
                   ></textarea>
                 </div>
 
-                <button type="submit" className="btn btn-full">
-                  <span>Send Message</span>
+                <button type="submit" className="btn btn-full" disabled={isSending}>
+                  <span>{isSending ? 'Sending...' : 'Send Message'}</span>
                   <Send size={18} />
                 </button>
               </form>
