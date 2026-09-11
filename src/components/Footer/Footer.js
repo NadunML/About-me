@@ -42,7 +42,6 @@ function Footer() {
             © {currentYear} Nadun Dilmina Liyanage. All rights reserved.
           </p>
           <p className="footer-tech">
-            Crafted with React, Three.js & Framer Motion
           </p>
         </div>
       </div>

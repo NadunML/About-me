@@ -42,7 +42,7 @@ function Hero() {
             <motion.div className="hero-badge-group" variants={itemVariants}>
               <span className="hero-badge">
                 <Sparkles size={14} className="badge-sparkle" />
-                Software Engineering Intern Candidate
+                Open for Tech Opportunities
               </span>
             </motion.div>
 
