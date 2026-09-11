@@ -43,6 +43,14 @@
   box-sizing: border-box;
 }
 
+/* HORIZONTAL SCROLL FIX */
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  position: relative;
+}
+
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
@@ -53,9 +61,17 @@ body {
   background-color: var(--bg-dark);
   color: var(--text-main);
   line-height: 1.6;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
 /* Custom Scrollbar */
@@ -84,12 +100,6 @@ h1, h2, h3, h4, h5, h6 {
 
 code, pre {
   font-family: var(--font-mono);
-}
-
-#root {
-  min-height: 100vh;
-  position: relative;
-  z-index: 1;
 }
 
 /* Layout Container */
@@ -282,12 +292,30 @@ code, pre {
 }
 
 /* Responsive adjustments */
+@media (max-width: 992px) {
+  .section {
+    padding: 90px 0;
+  }
+  .section-title {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 70px 0;
+  }
+  .container {
+    padding: 0 16px;
+  }
+  .section-title {
+    font-size: 1.85rem;
+  }
+}
+
 /* --- PREMIUM MOBILE RESPONSIVE FIXES --- */
 @media screen and (max-width: 768px) {
   /* Global Spacing & Smoothness */
-  body {
-    overflow-x: hidden !important;
-  }
   .container {
     padding: 0 1.5rem !important;
   }
@@ -356,7 +384,7 @@ code, pre {
   /* Grid Layouts for Stats & Socials */
   .hero-stats-row {
     display: grid !important;
-    grid-template-columns: 1fr 1fr !important; /* Columns 2ක් ලෙස පෙන්වීම */
+    grid-template-columns: 1fr 1fr !important;
     gap: 1rem !important;
     margin-top: 2rem !important;
   }
@@ -364,7 +392,7 @@ code, pre {
     padding: 1.2rem 0.8rem !important;
   }
   .hero-stat-card:last-child {
-    grid-column: span 2 !important; /* 3වෙනි stat එක මැදට ගැනීම */
+    grid-column: span 2 !important;
   }
 
   /* Glass Panels & Contact Cards */
