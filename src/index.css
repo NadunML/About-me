@@ -302,3 +302,72 @@ code, pre {
     font-size: 1.85rem;
   }
 }
+
+/* --- MOBILE RESPONSIVE FIXES --- */
+@media screen and (max-width: 768px) {
+  /* Global Container Fixes */
+  body {
+    overflow-x: hidden !important;
+  }
+  .container {
+    padding: 0 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Hero Section Mobile Fixes */
+  .hero-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 2rem !important;
+  }
+  .hero-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 15px !important;
+  }
+  .hero-buttons .btn, 
+  .hero-buttons .btn-outline {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .hero-info-row, .hero-stats-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 15px !important;
+  }
+  .avatar-wrapper {
+    margin: 0 auto !important;
+    max-width: 100% !important;
+    transform: scale(0.9) !important;
+  }
+  .floating-badge {
+    display: none !important; 
+  }
+
+  /* Contact Section Mobile Fixes */
+  .contact-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+  .form-row, .social-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  .contact-item-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    padding: 15px !important;
+  }
+  .copy-btn {
+    position: static !important;
+    margin-top: 10px !important;
+    align-self: flex-end !important;
+  }
+}
