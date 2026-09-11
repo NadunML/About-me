@@ -313,7 +313,7 @@ code, pre {
   }
 }
 
-/* --- PREMIUM MOBILE RESPONSIVE FIXES (STRICT CENTERING) --- */
+/* --- PREMIUM MOBILE RESPONSIVE FIXES (STRICT CENTERING & FULL WIDTH) --- */
 @media screen and (max-width: 768px) {
   /* Global Spacing & Smoothness */
   .container {
@@ -347,7 +347,7 @@ code, pre {
     line-height: 1.3 !important;
   }
 
-  /* Force glass panels, cards, and forms to stay in the center */
+  /* Force glass panels, cards, and forms to stay in the center and take full width */
   .glass-panel, .glass-card, .form-card, .info-card, .hero-content, .hero-visual {
     margin-left: auto !important;
     margin-right: auto !important;
@@ -388,7 +388,7 @@ code, pre {
     display: block !important;
   }
   .floating-badge {
-    transform: scale(0.8) !important;
+    display: none !important;
   }
   
   /* Button Stacking & Sizing */
@@ -410,7 +410,7 @@ code, pre {
     margin: 0 auto !important;
   }
 
-  /* Grid Layouts for Stats & Socials */
+  /* Grid Layouts for Stats */
   .hero-stats-row {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
@@ -426,18 +426,52 @@ code, pre {
     grid-column: span 2 !important;
   }
 
-  /* Contact Section Refinements */
+  /* Contact Section Refinements (Form Stretch Fixes) */
   .contact-grid { 
     display: flex !important;
     flex-direction: column !important;
     gap: 2rem !important; 
     width: 100% !important;
-    align-items: center !important;
   }
+  
+  /* Make both columns take 100% width */
+  .contact-info-column, .contact-form-column {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
   .glass-panel, .form-card, .info-card {
     padding: 1.8rem 1.2rem !important;
     border-radius: 20px !important;
   }
+  
+  /* Contact Form Elements */
+  .contact-form {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+  .form-group {
+    width: 100% !important;
+  }
+  /* Ensure inputs and textareas expand completely */
+  .form-group input, 
+  .form-group textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .form-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+    width: 100% !important;
+  }
+
+  /* Social & Info Cards */
   .contact-item-row {
     padding: 1.2rem !important;
     flex-direction: column !important;
@@ -445,6 +479,7 @@ code, pre {
     text-align: center !important;
     gap: 15px !important;
     width: 100% !important;
+    box-sizing: border-box !important;
   }
   .contact-item-left {
     display: flex !important;
@@ -465,12 +500,6 @@ code, pre {
     background: rgba(255, 255, 255, 0.1) !important;
     position: static !important;
   }
-  .form-row {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0 !important;
-    width: 100% !important;
-  }
   .social-grid {
     display: flex !important;
     flex-direction: column !important;
@@ -481,5 +510,6 @@ code, pre {
   .social-card {
     width: 100% !important;
     justify-content: center !important;
+    box-sizing: border-box !important;
   }
 }
