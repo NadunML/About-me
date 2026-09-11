@@ -303,46 +303,75 @@ code, pre {
   }
 }
 
-/* --- MOBILE RESPONSIVE FIXES --- */
+/* --- PROFESSIONAL MOBILE RESPONSIVE FIXES --- */
 @media screen and (max-width: 768px) {
-  /* Global Container Fixes */
+  /* Global Smoothness */
   body {
     overflow-x: hidden !important;
   }
   .container {
-    padding: 0 20px !important;
+    padding: 0 1.2rem !important;
     width: 100% !important;
     max-width: 100% !important;
     overflow-x: hidden !important;
   }
+  .section {
+    padding: 70px 0 !important;
+  }
+  .section-title {
+    font-size: 2rem !important;
+  }
+  .section-subtitle {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+  }
 
-  /* Hero Section Mobile Fixes */
+  /* Hero Section Mobile Fixes - Image on top, text below */
   .hero-grid {
     display: flex !important;
-    flex-direction: column !important;
+    flex-direction: column-reverse !important; 
     text-align: center !important;
     gap: 2rem !important;
+  }
+  .hero-title {
+    font-size: 2.1rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 10px !important;
+  }
+  .hero-description {
+    font-size: 0.95rem !important;
+    padding: 0 5px !important;
   }
   .hero-buttons {
     display: flex !important;
     flex-direction: column !important;
+    gap: 12px !important;
     width: 100% !important;
-    gap: 15px !important;
+    margin-top: 10px !important;
   }
   .hero-buttons .btn, 
   .hero-buttons .btn-outline {
     width: 100% !important;
     justify-content: center !important;
+    padding: 14px !important;
   }
-  .hero-info-row, .hero-stats-row {
+  .hero-info-row {
     flex-direction: column !important;
     align-items: center !important;
-    gap: 15px !important;
+    gap: 12px !important;
+  }
+  .hero-stats-row {
+    flex-direction: column !important;
+    gap: 12px !important;
+    margin-top: 20px !important;
+  }
+  .hero-stat-card {
+    width: 100% !important;
+    padding: 15px !important;
   }
   .avatar-wrapper {
     margin: 0 auto !important;
-    max-width: 100% !important;
-    transform: scale(0.9) !important;
+    transform: scale(0.85) !important;
   }
   .floating-badge {
     display: none !important; 
@@ -352,22 +381,32 @@ code, pre {
   .contact-grid {
     display: flex !important;
     flex-direction: column !important;
-    gap: 2rem !important;
+    gap: 2.5rem !important;
   }
   .form-row, .social-grid {
     display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
+    gap: 15px !important;
   }
   .contact-item-row {
     flex-direction: column !important;
-    align-items: flex-start !important;
-    text-align: left !important;
-    padding: 15px !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 20px 15px !important;
+    gap: 10px !important;
+  }
+  .contact-item-left {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
   }
   .copy-btn {
     position: static !important;
     margin-top: 10px !important;
-    align-self: flex-end !important;
+  }
+  .social-card {
+    justify-content: center !important;
   }
 }
