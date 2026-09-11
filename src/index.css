@@ -43,7 +43,7 @@
   box-sizing: border-box;
 }
 
-/* HORIZONTAL SCROLL FIX */
+/* HORIZONTAL SCROLL FIX & BASE LAYOUT */
 html, body {
   width: 100%;
   max-width: 100vw;
@@ -107,12 +107,15 @@ code, pre {
   max-width: 1240px;
   margin: 0 auto;
   padding: 0 24px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .section {
   padding: 120px 0;
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 
 /* Section Titles */
@@ -305,32 +308,52 @@ code, pre {
   .section {
     padding: 70px 0;
   }
-  .container {
-    padding: 0 16px;
-  }
   .section-title {
     font-size: 1.85rem;
   }
 }
 
-/* --- PREMIUM MOBILE RESPONSIVE FIXES --- */
+/* --- PREMIUM MOBILE RESPONSIVE FIXES (STRICT CENTERING) --- */
 @media screen and (max-width: 768px) {
   /* Global Spacing & Smoothness */
   .container {
-    padding: 0 1.5rem !important;
+    padding: 0 20px !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
   }
   .section {
     padding: 60px 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   
-  /* Typography Scaling */
-  .section-title { 
-    font-size: 2rem !important; 
-    line-height: 1.3 !important;
+  /* FORCE CENTER ALL COMPONENTS */
+  .section-header, .section-title, .section-subtitle {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
   .section-subtitle { 
     font-size: 1rem !important; 
     padding: 0 10px !important; 
+  }
+  .section-title { 
+    font-size: 2rem !important; 
+    line-height: 1.3 !important;
+  }
+
+  /* Force glass panels, cards, and forms to stay in the center */
+  .glass-panel, .glass-card, .form-card, .info-card, .hero-content, .hero-visual {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
   
   /* Hero Section Refinements */
@@ -339,6 +362,9 @@ code, pre {
     flex-direction: column-reverse !important;
     gap: 2.5rem !important;
     text-align: center !important;
+    width: 100% !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
   .hero-title {
     font-size: 2.2rem !important;
@@ -359,6 +385,7 @@ code, pre {
   .avatar-wrapper {
     transform: scale(0.95) !important;
     margin: 0 auto !important;
+    display: block !important;
   }
   .floating-badge {
     transform: scale(0.8) !important;
@@ -370,6 +397,7 @@ code, pre {
     flex-direction: column !important;
     gap: 1rem !important;
     width: 100% !important;
+    align-items: center !important;
   }
   .hero-buttons .btn, 
   .hero-buttons .btn-outline {
@@ -379,6 +407,7 @@ code, pre {
     border-radius: var(--radius-md) !important;
     display: flex !important;
     justify-content: center !important;
+    margin: 0 auto !important;
   }
 
   /* Grid Layouts for Stats & Socials */
@@ -387,17 +416,23 @@ code, pre {
     grid-template-columns: 1fr 1fr !important;
     gap: 1rem !important;
     margin-top: 2rem !important;
+    width: 100% !important;
   }
   .hero-stat-card {
     padding: 1.2rem 0.8rem !important;
+    text-align: center !important;
   }
   .hero-stat-card:last-child {
     grid-column: span 2 !important;
   }
 
-  /* Glass Panels & Contact Cards */
+  /* Contact Section Refinements */
   .contact-grid { 
+    display: flex !important;
+    flex-direction: column !important;
     gap: 2rem !important; 
+    width: 100% !important;
+    align-items: center !important;
   }
   .glass-panel, .form-card, .info-card {
     padding: 1.8rem 1.2rem !important;
@@ -406,24 +441,45 @@ code, pre {
   .contact-item-row {
     padding: 1.2rem !important;
     flex-direction: column !important;
-    align-items: flex-start !important;
-    text-align: left !important;
+    align-items: center !important;
+    text-align: center !important;
     gap: 15px !important;
+    width: 100% !important;
   }
   .contact-item-left {
     display: flex !important;
     flex-direction: column !important;
-    align-items: flex-start !important;
+    align-items: center !important;
+    text-align: center !important;
     gap: 10px !important;
+    width: 100% !important;
+  }
+  .contact-item-details {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
   }
   .copy-btn {
-    align-self: flex-end !important;
-    margin-top: -30px !important;
+    align-self: center !important;
+    margin-top: 10px !important;
     background: rgba(255, 255, 255, 0.1) !important;
+    position: static !important;
   }
   .form-row {
     display: flex !important;
     flex-direction: column !important;
     gap: 0 !important;
+    width: 100% !important;
+  }
+  .social-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+  .social-card {
+    width: 100% !important;
+    justify-content: center !important;
   }
 }

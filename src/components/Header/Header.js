@@ -52,6 +52,7 @@ function Header() {
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container header-container">
+        
         {/* Brand Logo */}
         <div className="nav-brand" onClick={() => scrollToSection('home')}>
           <div className="brand-logo">
@@ -59,7 +60,7 @@ function Header() {
           </div>
           <div className="brand-text">
             <span className="brand-name">Nadun Liyanage</span>
-            <span className="brand-sub">Software Engineer</span>
+            <span className="brand-sub">CIS Undergraduate</span>
           </div>
         </div>
 
@@ -90,7 +91,7 @@ function Header() {
         <div className="header-actions">
           <div className="status-badge hide-mobile">
             <span className="pulse-dot"></span>
-            <span>Open for Internships</span>
+            <span>Open for Opportunities</span>
           </div>
 
           <button 
@@ -124,7 +125,7 @@ function Header() {
             <div className="mobile-drawer-inner">
               <div className="status-badge mobile-status">
                 <span className="pulse-dot"></span>
-                <span>Open for SE Internships</span>
+                <span>CIS Undergraduate</span>
               </div>
               <ul className="mobile-menu-list">
                 {navLinks.map((link) => (
