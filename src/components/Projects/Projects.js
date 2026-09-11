@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Sparkles, ShieldAlert, Utensils, Clock, Music, CheckCircle } from 'lucide-react';
+import { ExternalLink, Sparkles, ShieldAlert, Utensils, Clock, Music, CheckCircle, Gamepad2 } from 'lucide-react';
 import './Projects.css';
 
 function Projects() {
@@ -23,8 +23,8 @@ function Projects() {
         "Implemented secure authentication via Firebase Auth and Microsoft Single Sign-On (SSO)."
       ],
       technologies: ["React.js", "Python", "FastAPI", "YOLOv8", "MobileNetV2", "OpenCV", "dlib", "Firebase Auth", "MS SSO"],
-      demoLink: "https://github.com/NadunML",
-      githubLink: "https://github.com/NadunML"
+      demoLink: "https://lnkd.in/p/gkjFSm-z",
+      githubLink: "https://github.com/NadunML/Frontend_CareVision_LK.git"
     },
     {
       id: 'restaurant',
@@ -43,7 +43,7 @@ function Projects() {
       ],
       technologies: ["React.js", "Tailwind CSS", "Vite", "Node.js", "Express.js", "MySQL", "REST APIs"],
       demoLink: "https://github.com/NadunML",
-      githubLink: "https://github.com/NadunML"
+      githubLink: "https://github.com/NadunML/Mangotree-Customer-frontend"
     },
     {
       id: 'studyfocuser',
@@ -60,8 +60,8 @@ function Projects() {
         "Deployed and optimized for zero-latency performance on Vercel."
       ],
       technologies: ["React.js", "JavaScript", "HTML5", "CSS3", "Vercel"],
-      demoLink: "https://github.com/NadunML",
-      githubLink: "https://github.com/NadunML"
+      demoLink: "https://studyfocuser.vercel.app/",
+      githubLink: "https://github.com/NadunML/Alarm-System"
     },
     {
       id: 'chordbox',
@@ -78,8 +78,26 @@ function Projects() {
         "Implemented custom music note parser and transposition tools."
       ],
       technologies: ["React.js", "JavaScript", "HTML5 Canvas", "CSS3"],
-      demoLink: "https://github.com/NadunML",
-      githubLink: "https://github.com/NadunML"
+      demoLink: "https://chordpage.vercel.app/",
+      githubLink: "https://github.com/NadunML/Chord-Page"
+    },
+    {
+      id: 'neogames',
+      title: "Neo Games",
+      subtitle: "Retro Arcade Mini-Games Portal",
+      role: "Developer",
+      category: "web",
+      featured: true,
+      icon: <Gamepad2 size={28} className="project-type-icon icon-green" />,
+      description: "A highly responsive web-based gaming portal featuring classic retro games like Tetris, Snake, and Racer, optimized for both desktop and mobile devices.",
+      bulletPoints: [
+        "Engineered custom game logic and rendering algorithms for classic arcade games using React and HTML5 Canvas.",
+        "Developed a dynamic, mobile-first user interface featuring an integrated on-screen virtual gamepad.",
+        "Successfully wrapped the React web application into a fully functional standalone Android APK using AppCreator24 for rapid deployment."
+      ],
+      technologies: ["React.js", "Vite", "JavaScript", "HTML5 Canvas", "CSS3"],
+      demoLink: "https://neo-games-nine.vercel.app/",
+      githubLink: "https://github.com/NadunML/Neo-games"
     }
   ];
 
